@@ -131,7 +131,7 @@
   <script>
   $(document).ready(function() {
     $('#btnsubmit').on('click',function(e){
-      $('#submitform').submit();
+      
       // var formData = {
       //   'username' : $('#yourUsername').val().trim(),
       //   'password' : $('#yourPassword').val().trim()

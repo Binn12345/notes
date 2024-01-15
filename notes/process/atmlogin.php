@@ -1,7 +1,5 @@
 <?php 
 
-
-    // var_dump('<pre>',get_defined_vars());die;
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
@@ -47,19 +45,24 @@
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
         
-
-        if ($username == 'post'){
-            echo "Authentication successful!"; // Debugging
-            session_write_close(); 
-            header('Location: ../admin/');
-            exit;
-        }
         if ($stmt->execute() && $stmt->get_result()->num_rows === 1 &&  $test ) {
-            $_SESSION['user_authenticated'] = true;
-            // $var['temp'] = user_details($username, $password);
 
+
+            $user_data = $result[0];
+            $_SESSION['user_authenticated'] = true;
+            $_SESSION['guest'] = 1;
+            $_SESSION['userdata'] = $user_data;
+            // $var['temp'] = user_details($username, $password);
+            $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
+            header('Location: ../admin/?token=$transkey');
+            exit;
             
         } else {
+            $response = [
+                'status'  => 'success',
+                'message' => 'Records inserted successfully.'
+            ];
+            echo json_encode($response);
             header('Location: ../index.php?error=1');
             exit;
         }

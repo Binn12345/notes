@@ -1,3 +1,18 @@
+<?php 
+
+    // var_dump('<pre>',$_GET,$_POST,$_SESSION,get_defined_vars());die;
+   session_start(); 
+   include_once '../config/dbconnection.php'; 
+   include_once '../class/user_checker.php'; 
+
+    $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
+    // $userKey = $_SESSION['guest'];
+
+    $h = $_SESSION['last_activity'] ?? "";
+
+    
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
