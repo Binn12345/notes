@@ -4,13 +4,19 @@
    session_start(); 
    include_once '../config/dbconnection.php'; 
    include_once '../class/user_checker.php'; 
+   include_once '../class/information.php'; 
 
     $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
     // $userKey = $_SESSION['guest'];
 
     $h = $_SESSION['last_activity'] ?? "";
+  
+    $username = $_GET['username'];
 
-    
+    $user_data = new MyClass();
+    $dta = $user_data->user_info($username,$conn);
+
+    var_dump('<pre>',$dta);die;
    
 ?>
 <!DOCTYPE html>

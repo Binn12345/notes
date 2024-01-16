@@ -48,13 +48,21 @@
         if ($stmt->execute() && $stmt->get_result()->num_rows === 1 &&  $test ) {
 
 
-            $user_data = $result[0];
+            // $user_data = $result[0];
+            // var_dump('<pre>',$query);die;
+            $sql = "SELECT * FROM users JOIN tblPersonalData ON tblPersonalData.uniqid = users.uniqid 
+                    WHERE users.username = '{$username}'";
+            $sql = $conn->prepare($sql);
+            $sql->execute();
+            $result = $sql->get_result();
+            $user_data = $result->fetch_assoc();
+            // var_dump('<pre>',$sql);die;
             $_SESSION['user_authenticated'] = true;
             $_SESSION['guest'] = 1;
             $_SESSION['userdata'] = $user_data;
             // $var['temp'] = user_details($username, $password);
             $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
-            header('Location: ../admin/?token=$transkey');
+            header("Location: ../admin/?token='{$transkey}'&username='{$username}'");
             exit;
             
         } else {

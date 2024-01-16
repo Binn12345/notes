@@ -128,10 +128,51 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
   $(document).ready(function() {
     $('#btnsubmit').on('click',function(e){
-      
+      e.preventDefault();
+    
+        var usernameInput = $('#yourUsername').val().trim();
+        var passwordInput = $('#yourPassword').val().trim();
+    
+      const SwalConfig = {
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 2000,
+            background: '#f64341',
+            color: '#ffff',
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.resumeTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        };
+    
+        if (usernameInput === "" && passwordInput === "") {
+            Swal.fire({...SwalConfig, icon: 'warning', title: 'Both fields must be required.'});
+
+            // Play the notification sound
+            playNotificationSound();
+        } else if (usernameInput === "") {
+            Swal.fire({...SwalConfig, icon: 'warning', title: 'Username or email must be required.'});
+            // Play the notification sound
+            playNotificationSound();
+        } else if (passwordInput === "") {
+            Swal.fire({...SwalConfig, icon: 'warning', title: 'Password must be required.'});
+            // Play the notification sound
+            playNotificationSound();
+        } else {
+            $('#submitform').submit();
+            // Submit the form after a 2-second delay
+            // setTimeout(function() {
+            //     $('#submitform').submit();
+            // }, 1000); // 2 seconds delay
+            // Play the notification sound
+            // playNotificationSoundDenied();
+        }
       // var formData = {
       //   'username' : $('#yourUsername').val().trim(),
       //   'password' : $('#yourPassword').val().trim()
