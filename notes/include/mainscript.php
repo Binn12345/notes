@@ -15,14 +15,15 @@
 
   <script>
 
-if(!$('#bool').val()){
-      alert('Please Fill out the form');
+if($('#bool').val() == 0){
+  // console.log($('#bool').val());
+  alert('Please fill upp the blank space');
     }
 //   $(document).ready(function() {
     
       
     
-//       console.log($('#bool').val());
+      console.log($('#bool').val());
     
 
 // });

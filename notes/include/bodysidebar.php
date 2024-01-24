@@ -183,7 +183,7 @@
 
 
 
-      <?php if($usertype == '3' ) { ?>
+      <?php $usertype=''; if($usertype == '3' ) { ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="pages-blank.html">
             <i class="bi bi-file-earmark"></i>

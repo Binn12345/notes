@@ -21,7 +21,7 @@
     $dta = $user_data->user_info($username,$conn);
     $usertype = $dta['usertype'];
     
-    $booldta = $_SESSION['userdata']['fname'] ? true : false;
+    // $booldta = $_SESSION['userdata']['fname'] ? true : false;
     // var_dump('<pre>',$_SESSION['userdata'],$bool);die;
     
 ?>
@@ -32,7 +32,7 @@
 </head>
 
 <body>
-  <input type="hidden" id="bool">
+  <input type="hidden" id="bool" value='<?=$_SESSION['userdata']['fname'] ? 1 : 0 ?>'>
   <?php include_once '../include/bodyheader.php' ?>
   <?php include_once '../include/bodysidebar.php' ?>
 

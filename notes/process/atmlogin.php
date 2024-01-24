@@ -60,6 +60,7 @@
             $_SESSION['user_authenticated'] = true;
             $_SESSION['guest'] = 1;
             $_SESSION['userdata'] = $user_data;
+            $_SESSION['usertype'] = '3';
             // $var['temp'] = user_details($username, $password);
             $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
             header("Location: ../login/?token='{$transkey}'&username='{$username}'");
