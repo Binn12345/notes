@@ -45,7 +45,7 @@
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
         
-        if ($stmt->execute() && $stmt->get_result()->num_rows === 1 &&  $test ) {
+        if ($stmt->execute() && $stmt->get_result()->num_rows == 1 &&  $test ) {
 
 
             // $user_data = $result[0];
@@ -62,7 +62,7 @@
             $_SESSION['userdata'] = $user_data;
             // $var['temp'] = user_details($username, $password);
             $transkey = password_hash('accessgranted', PASSWORD_BCRYPT);
-            header("Location: ../admin/?token='{$transkey}'&username='{$username}'");
+            header("Location: ../login/?token='{$transkey}'&username='{$username}'");
             exit;
             
         } else {

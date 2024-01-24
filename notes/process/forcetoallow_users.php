@@ -1,16 +1,12 @@
 <?php 
 
-
-    // var_dump('<pre>',get_defined_vars());die;
-
     session_start();
-    // Database connection parameters
+
     include '../config/dbconnection.php';
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // die($_SERVER['REQUEST_METHOD']);
-        
+
         $username = $_POST['username'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $type     = $_POST['type'];
@@ -24,38 +20,75 @@
 
         $stmt = $conn->prepare($sql);
         $stmt2 = $conn->prepare($sql2);
-
+        // var_dump('<pre>', $stmt,$stmt2,$_POST);die;
         if ($stmt && $stmt2) {
-            // Bind parameters for the first prepared statement
-            $stmt->bind_param("ssss", $username, $password, $type, $subid);
-            
-            // Execute the first statement
-            $result = $stmt->execute();
-        
-            // Bind parameters for the second prepared statement
-            $stmt2->bind_param("ss", $subid, $username);
-        
-            // Execute the second statement
-            $result2 = $stmt2->execute();
-        
-            // Check for errors
-            if ($result && $result2) {
-                $response = [
-                    'status'  => 'success',
-                    'message' => 'Records inserted successfully.'
-                ];
-                echo json_encode($response);
+
+            $bool = checkExists($_POST,$conn);
+
+            if($bool == true) {
+
+                error_response($_POST['username']);
+
             } else {
-                echo "Error: " . $stmt->error . "\n" . $stmt2->error;
+
+                response($stmt,$stmt2,$username,$password,$type,$subid);
+
             }
-        
-            // Close the statements
-            $stmt->close();
-            $stmt2->close();
+            
         } else {
             echo "Error: " . $conn->error;
         }
-        
+           
+    }
 
-        
+    function checkExists($params,$conn)
+    {
+        $sql = "SELECT * FROM users WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bind_param("s", $params['username']);
+        $stmt->execute();
+
+        $result = $stmt->get_result()->num_rows == 1;
+       
+        return $result;
+    }
+
+    function error_response($username="")
+    {
+        $response = [
+            'status'  => 'error',
+            'message' => $username.' already taken.'
+        ];
+        echo json_encode($response);
+    }
+
+    function response($stmt,$stmt2,$username,$password,$type,$subid)
+    {
+        // Bind parameters for the first prepared statement
+        $stmt->bind_param("ssss", $username, $password, $type, $subid);
+        // Execute the first statement
+        $result = $stmt->execute();
+    
+        // Bind parameters for the second prepared statement
+        $stmt2->bind_param("ss", $subid, $username);
+    
+        // Execute the second statement
+        $result2 = $stmt2->execute();
+    
+        // Check for errors
+        if ($result && $result2) {
+            $response = [
+                'status'  => 'success',
+                'message' => 'Records inserted successfully.'
+            ];
+            echo json_encode($response);
+        } else {
+            echo "Error: " . $stmt->error . "\n" . $stmt2->error;
+        }
+    
+        // Close the statements
+        $stmt->close();
+        $stmt2->close();
+
     }
