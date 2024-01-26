@@ -20,8 +20,24 @@ if($('#bool').val() == 0 && $('#usertype').val() == '3'){
   alert('Please fill upp the blank space');
     }
 //   $(document).ready(function() {
-    $('#updateInfo').on('click', function(e){
-      // alert('Please fill');
+    $('#updateInfoSub').on('click', function(e){
+    
+      var impdata = {
+         'username' : $('#var').val(),
+         'fname'    : $('#fname').val(),
+         'mname'    : $('#mname').val(),
+         'lname'    : $('#lname').val()
+      }
+
+      $.ajax({
+          type : 'POST',
+          url  : '../process/globalprocess.php',
+          data : impdata,
+          success: function(response) {
+            
+          }
+      })
+
     });
       
     

@@ -1,4 +1,5 @@
-    
+
+
     <?php if($_SESSION['userdata']['fname'] != 0) {?>
     <div class="pagetitle">
       <h1>Dashboard</h1>
@@ -75,28 +76,30 @@
                         <div class="col-xl-8">
                                 <div class="col-sm-12">
                                   <div class="row">
-                                    <div class="col-lg-4">
-                                      <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Firstname</label>
+
+                                    <!-- <form class="row g-3 needs-validation" novalidate id="newuserinfo"> -->
+                                      <div class="col-lg-4">
+                                        <div class="form-floating mb-3">
+                                          <input type="email" class="form-control" id="fname" placeholder="name@example.com">
+                                          <label for="floatingInput">Firstname</label>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                      <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Middlename</label>
+                                      <div class="col-lg-4">
+                                        <div class="form-floating mb-3">
+                                          <input type="email" class="form-control" id="mname" placeholder="name@example.com">
+                                          <label for="floatingInput">Middlename</label>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                      <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Lastname</label>
+                                      <div class="col-lg-4">
+                                        <div class="form-floating mb-3">
+                                          <input type="email" class="form-control" id="lname" placeholder="name@example.com">
+                                          <label for="floatingInput">Lastname</label>
+                                        </div>
                                       </div>
-                                    </div>
-                                   
+                                   <!-- <form> -->
                                   </div>
                                   
-                                  <div class="form-floating mb-3">
+                                  <!-- <div class="form-floating mb-3">
                                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                   </div>
@@ -112,7 +115,7 @@
                                       <option value="3">Three</option>
                                     </select>
                                     <label for="floatingSelect">Works with selects</label>
-                                  </div>
+                                  </div> -->
                                 </div>
                                   <div class="col-6">
                                     <!-- <button class="btn btn-primary w-100" id='btnsubmit'>Login</button> -->
@@ -121,7 +124,7 @@
                                     <!-- <button class="btn btn-primary w-100" id='btnsubmit'>Login</button> -->
                                 </div>
                                 <div class="col-2" style="float: right;">
-                                    <button class="btn btn-primary w-100" id='updateInfo'>SAVE</button>
+                                    <button class="btn btn-primary w-100" id='updateInfoSub'>SAVE</button>
                                 </div>
                         </div>
                     </section>

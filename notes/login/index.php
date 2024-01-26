@@ -20,6 +20,8 @@
     $user_data = new MyClass();
     $dta = $user_data->user_info($username,$conn);
     $usertype = $dta['usertype'];
+
+    // var_dump('<pre>',$_SESSION['userdata']['username']);die;
     
     // $booldta = $_SESSION['userdata']['fname'] ? true : false;
     // var_dump('<pre>',$_SESSION['userdata'],$bool);die;
@@ -32,7 +34,9 @@
 </head>
 
 <body>
-  <input type="hidden" id="bool" value='<?=$_SESSION['userdata']['fname'] ? 1 : 0 ?>'>+
+
+  <input type="hidden" name="vars" value="<?=$_SESSION['userdata']['username']?>" id="var"/>
+  <input type="hidden" id="bool" value='<?=$_SESSION['userdata']['fname'] ? 1 : 0 ?>'>
   <input type="hidden" id="usertype" value='<?=$usertype?>'>
   <?php include_once '../include/bodyheader.php' ?>
   <?php include_once '../include/bodysidebar.php' ?>
