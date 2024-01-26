@@ -12,46 +12,134 @@
     <?php } ?>
     <section class="section dashboard">
       <div class="row">
-      <?php if($_SESSION['userdata']['fname'] == 0) {?>
-          
+
+      <?php if($_SESSION['userdata']['fname'] == 0 && $_SESSION['userdata']['usertype'] == 3 ) {?>
+          <!-- USER SIDE  -->
         <div class="col-lg-12">
           <div class="row">
            <!-- Sales Card -->
-           <div class="col-xxl-12 col-md-6">
-              <div class="card info-card sales-card">
+           <div class="col-xxl-12 col-md-12">
+              
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
+              <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                  <div class="card-header">Welcome <?=strtoupper($_SESSION['userdata']['username']);?> ,</div>
+                  <br>
+                  <!-- Default Tabs -->
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">#</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Fill up form</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <!-- <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button> -->
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h5 class="card-title">You're first time here . . .</h5>
+                      We've noticed that you are first time user here . . . and system provide a form , and you're required to fill all to preceeed. please click the Fill up form.
                     </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                    </div>
+                    <section class="section profile">
+                    <br>
+                    <div class="row">
+                        <div class="col-xl-4">
+
+                          <div class="card">
+                            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                              <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                              <h2><?=strtoupper($_SESSION['userdata']['username']);?></h2>
+                              <h3>Web Designer</h3>
+                              <div class="social-links mt-2">
+                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                              </div>
+                              <hr>
+                              <div class="col-12">
+                                    <button class="btn btn-primary w-100" id='updateInfo'>Upload</button>
+                                </div>
+                            </div>
+                          </div>
+
+                        
+
+                        </div>
+                        
+                        <div class="col-xl-8">
+                                <div class="col-sm-12">
+                                  <div class="row">
+                                    <div class="col-lg-4">
+                                      <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Firstname</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                      <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Middlename</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                      <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Lastname</label>
+                                      </div>
+                                    </div>
+                                   
+                                  </div>
+                                  
+                                  <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;"></textarea>
+                                    <label for="floatingTextarea">Comments</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                      <option selected>Open this select menu</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                    <label for="floatingSelect">Works with selects</label>
+                                  </div>
+                                </div>
+                                  <div class="col-6">
+                                    <!-- <button class="btn btn-primary w-100" id='btnsubmit'>Login</button> -->
+                                </div>
+                                <div class="col-4">
+                                    <!-- <button class="btn btn-primary w-100" id='btnsubmit'>Login</button> -->
+                                </div>
+                                <div class="col-2" style="float: right;">
+                                    <button class="btn btn-primary w-100" id='updateInfo'>SAVE</button>
+                                </div>
+                        </div>
+                    </section>
+                            
+                    <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                      Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
+                    </div> -->
+                  </div><!-- End Default Tabs -->
+                  <br>
+                  <div class="card-footer">
+                  
                   </div>
                 </div>
-
               </div>
             </div><!-- End Sales Card -->
           </div>
         <div>
+          <!-- END OF USER SISE -->
 
       <?php } else { ?>
         <!-- Left side columns -->

@@ -60,18 +60,15 @@
                   <form action="process/atmlogin.php" method="POST" novalidate id="submitform">
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                      <div class="form-floating mb-3">
+                        <input type="email" name="username" class="form-control" id="yourUsername" placeholder="name@example.com">
+                        <label for="floatingInput">Username</label>
                       </div>
                     </div>
 
-                    <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                    <div class="form-floating mb-3">
+                      <input type="password" name="password" class="form-control" id="yourPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
                     </div>
 
                     <div class="col-12">

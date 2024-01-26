@@ -15,15 +15,17 @@
 
   <script>
 
-if($('#bool').val() == 0){
+if($('#bool').val() == 0 && $('#usertype').val() == '3'){
   // console.log($('#bool').val());
   alert('Please fill upp the blank space');
     }
 //   $(document).ready(function() {
-    
+    $('#updateInfo').on('click', function(e){
+      // alert('Please fill');
+    });
       
     
-      console.log($('#bool').val());
+      // console.log($('#bool').val());
     
 
 // });

@@ -2,6 +2,18 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
 
+
+    
+  <?php if($usertype == '3' ) { ?>
+    <li class="nav-item">
+      <a class="nav-link " href="index.html">
+        <i class="bi bi-grid"></i>
+        <span>Home</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+  <?php } else { ?>
+
+    
     <li class="nav-item">
       <a class="nav-link " href="index.html">
         <i class="bi bi-grid"></i>
@@ -178,12 +190,13 @@
         </li>
       </ul>
     </li><!-- End Icons Nav -->
+    <?php } ?>
 
     <li class="nav-heading">Pages</li>
 
 
 
-      <?php $usertype=''; if($usertype == '3' ) { ?>
+      <?php if($usertype == '3' ) { ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="pages-blank.html">
             <i class="bi bi-file-earmark"></i>
@@ -192,6 +205,13 @@
         </li><!-- End Blank Page Nav -->
       <!-- </ul> -->
       <?php } else { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="pages-blank.html">
+            <i class="bi bi-file-earmark"></i>
+            <span>Blank</span>
+          </a>
+        </li><!-- End Blank Page Nav -->
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="users-profile.html">
             <i class="bi bi-person"></i>

@@ -1,5 +1,5 @@
 <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy;<?php echo date("Y"); ?> Copyright  <strong><span>WeChat</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
