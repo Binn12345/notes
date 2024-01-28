@@ -24,7 +24,7 @@
     // var_dump('<pre>',$_SESSION['userdata']['username']);die;
     
     // $booldta = $_SESSION['userdata']['fname'] ? true : false;
-    // var_dump('<pre>',$_SESSION['userdata'],$bool);die;
+    // var_dump('<pre>',$_SESSION);die;
     // var_dump('<pre>',$_SESSION,$_POST,get_defined_vars());die;
 ?>
 <!DOCTYPE html>
@@ -38,6 +38,7 @@
   <input type="hidden" name="vars" value="<?=$_SESSION['userdata']['username']?>" id="var"/>
   <input type="hidden" id="bool" value='<?=$_SESSION['userdata']['fname'] ? 1 : 0 ?>'>
   <input type="hidden" id="usertype" value='<?=$usertype?>'>
+  <input type="hidden" id="uid" value='<?=$_SESSION['userdata']['uniqid']?>'>
   <?php include_once '../include/bodyheader.php' ?>
   <?php include_once '../include/bodysidebar.php' ?>
 

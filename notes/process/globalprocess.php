@@ -3,7 +3,7 @@
     session_start();
     include '../config/dbconnection.php';
 
-    
+    $id       = $_POST['uid']      ?: "";
     $username = $_POST['username'] ?: "";
     $fname    = $_POST['fname']    ?: "";
     $mname    = $_POST['mname']    ?: "";
@@ -11,8 +11,8 @@
     $fullname = $lname.', '.$fname.' '.$mname;
 
 
-    $sql = "UPDATE tblpersonaldata SET fname = '{$fname}' AND mname = '{$mname}' AND lname = '{$lname}' AND fullname = '{$fullname}' WHERE username = '{$username}'";
-    var_dump($sql);die;
+    $sql = "UPDATE tblpersonaldata SET fname = '{$fname}' , mname = '{$mname}' , lname = '{$lname}' , fullname = '{$fullname}' WHERE uniqid = '{$id}'";
+    // var_dump('<pre>',$_POST);die;
     $result = mysqli_query($conn, $sql);
    
     if ($result) {

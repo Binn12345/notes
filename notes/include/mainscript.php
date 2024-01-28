@@ -23,6 +23,7 @@ if($('#bool').val() == 0 && $('#usertype').val() == '3'){
     $('#updateInfoSub').on('click', function(e){
     
       var impdata = {
+         'uid'      : $('#uid').val(),
          'username' : $('#var').val(),
          'fname'    : $('#fname').val(),
          'mname'    : $('#mname').val(),
